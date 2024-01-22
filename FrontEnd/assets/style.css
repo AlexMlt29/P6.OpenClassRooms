@@ -30,6 +30,7 @@ footer, header, hgroup, menu, nav, section {
 }
 body {
 	line-height: 1;
+	background-color: #FFFEF8;
 }
 ol, ul {
 	list-style: none;
@@ -45,6 +46,10 @@ q:before, q:after {
 table {
 	border-collapse: collapse;
 	border-spacing: 0;
+}
+a {
+	color: #000000;
+    text-decoration: none;
 }
 /** end reset css**/
 body {
@@ -88,7 +93,6 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
-
 }
 nav li {
 	padding: 0 10px;
@@ -179,10 +183,23 @@ input[type="submit"]{
 	text-align: center;
 	border-radius: 60px ;
 }
-
+footer {
+	width: 100vw;
+    margin-left: calc(-50vw + 50%);
+    margin-right: calc(-50vw + 50%);
+    padding: 0;
+    background-color: #ffffff;
+}
 footer nav ul {
 	display: flex;
-	justify-content: flex-end;
-	margin: 2em
+    justify-content: flex-end;
+    margin: 0;
+    width: 100%;
+    height: 60px;
+    background-color: #ffffff;
+    padding-right: 0px;
 }
-
+footer nav li {
+	position: relative;
+	left: -100px;
+}
