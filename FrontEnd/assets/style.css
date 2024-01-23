@@ -203,3 +203,56 @@ footer nav li {
 	position: relative;
 	left: -100px;
 }
+/**** login page style ****/
+
+.description {
+	font-weight: 600;
+}
+.title {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.display {
+	width: 100px;
+	height: 36px;
+}
+.text {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.formulaire {
+	width: 379px;
+	height: 51px;
+}
+
+.form-group {
+    display: flex;
+	justify-content: center;
+	align-items: start;
+	flex-direction: column;
+	width: 379px;
+	height: 51px;
+	position: relative;
+	left: 33%;
+}
+.form-group label {
+	display: block;
+	color: #666;
+	font-size: 14px;
+}
+
+.form-group input {
+width: 100%;
+padding: 10px;
+border: 1px solid #ddd;
+border-radius: 5px;
+box-sizing: border-box;
+}
+
+.form-group input[type="email"],
+.form-group input[type="password"] {
+display: block;
+width: 100%;
+}
