@@ -357,7 +357,7 @@ input[type="password"] {
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-button {
+.button {
   width: 179px;
   height: 36px;
   padding: 10px 20px;
