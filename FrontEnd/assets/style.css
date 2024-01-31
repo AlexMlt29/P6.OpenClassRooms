@@ -318,6 +318,12 @@ footer nav li {
   margin-top: 150px;
 }
 
+#error-message {
+  display:none; 
+  color:red;
+  margin-bottom: 30px;
+}
+
 .page {
   font-weight: 600;
 }
@@ -331,7 +337,7 @@ footer nav li {
   margin-bottom: 50px;
 }
 
-.formulaire {
+#login-form {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -346,6 +352,7 @@ footer nav li {
 label {
   display: block;
   margin-bottom: 10px;
+  color: #3D3D3D;
 }
 
 input[type="text"],
@@ -372,7 +379,11 @@ input[type="password"] {
 }
 
 .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: underline;
+  color: #3D3D3D;
 }
 
 .footer-login {

@@ -25,18 +25,19 @@
     <main>
       <section class="login">
         <div class="title">Log in</div>
-        <div class="formulaire">
-            <div class="input-group">
-                <label for="username">E-mail</label>
-                <input type="text" id="username" name="username" required>
-            </div>
-            <div class="input-group">
-                <label for="password">Mot de passe</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            <button class="button" type="submit">Se connecter</button>
-            <p><a class="link" href="#">Mot de passe oublié</a></p>
-        </div>
+        <form id="login-form">
+          <div id="error-message"></div>
+          <div class="input-group">
+            <label for="email">E-mail</label>
+            <input type="text" id="email" name="email" required autocomplete="email" />
+          </div>
+          <div class="input-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" name="password" required autocomplete="current-password" />
+          </div>
+          <button class="button" type="submit">Se connecter</button>
+        </form>
+        <p><a class="link" href="#">Mot de passe oublié</a></p>
       </section>
     </main>
     <footer class="footer-login">
@@ -46,5 +47,6 @@
         </ul>
       </nav>
     </footer>
+    <script src="./scripts/login.js"></script>
   </body>
 </html>

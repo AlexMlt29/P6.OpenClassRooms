@@ -1,3 +1,5 @@
+// GALLERY //
+
 // Attache un écouteur d'événements qui exécute la fonction callback une fois que le contenu du DOM est chargé
 document.addEventListener("DOMContentLoaded", function () {
   // Effectue une requête GET à l'API pour récupérer les données des travaux
@@ -28,6 +30,8 @@ function updatePortfolio(works) {
     });
   }
 }
+
+// FILTER //
 
 // Fonction pour créer les boutons de filtre une fois que les données de catégorie sont récupérées
 function createFilterButtons(categories) {
