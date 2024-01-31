@@ -416,3 +416,26 @@ input[type="password"] {
 .content {
   margin-top: 20px;
 }
+
+#project {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 30px;
+  padding-left: 14%;
+  margin-bottom: 50px;
+}
+
+.project-display {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+  border: none;
+  background-color: transparent;
+  margin-top: 8px;
+  color:#000000;
+  font-weight: 400;
+  font-family: "work sans";
+  font-size: 14px;
+}

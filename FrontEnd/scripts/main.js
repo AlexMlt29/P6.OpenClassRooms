@@ -114,9 +114,6 @@ function displayLoggedInContent() {
   // Sélectionnez les éléments que vous souhaitez afficher/cacher
   const loggedInElements = document.querySelectorAll('.logged-in');
   const loggedOutElements = document.querySelectorAll('.logged-out');
-
-  // Affichez les éléments pour les utilisateurs connectés
-  loggedInElements.forEach(el => el.style.display = 'block');
   
   // Cachez les éléments qui ne doivent être visibles que pour les utilisateurs non connectés
   loggedOutElements.forEach(el => el.style.display = 'none');
@@ -128,7 +125,6 @@ function displayLoggedOutContent() {
 
   // L'inverse de displayLoggedInContent
   loggedInElements.forEach(el => el.style.display = 'none');
-  loggedOutElements.forEach(el => el.style.display = 'block');
 }
 
 
