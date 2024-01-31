@@ -1,5 +1,4 @@
 // GALLERY //
-
 // Attache un écouteur d'événements qui exécute la fonction callback une fois que le contenu du DOM est chargé
 document.addEventListener("DOMContentLoaded", function () {
   // Effectue une requête GET à l'API pour récupérer les données des travaux
@@ -31,8 +30,16 @@ function updatePortfolio(works) {
   }
 }
 
-// FILTER //
 
+
+
+
+
+
+
+
+
+// FILTER //
 // Fonction pour créer les boutons de filtre une fois que les données de catégorie sont récupérées
 function createFilterButtons(categories) {
   const filterContainer = document.getElementById("filter-container"); // Assurez-vous que cet élément existe dans votre HTML
@@ -80,3 +87,59 @@ function getCategoriesFromWorks() {
 
 // Écouteur d'événements pour s'assurer que le DOM est chargé avant de créer les boutons de filtre
 document.addEventListener("DOMContentLoaded", getCategoriesFromWorks);
+
+
+
+
+
+
+
+
+
+
+
+// LOGGEG IN PAGE //
+document.addEventListener('DOMContentLoaded', (event) => {
+  const authToken = localStorage.getItem('authToken');
+  if (authToken) {
+      // L'utilisateur est connecté, affichez le contenu réservé aux utilisateurs connectés
+      displayLoggedInContent();
+  } else {
+      // L'utilisateur n'est pas connecté, cachez ou affichez le contenu pour les visiteurs non connectés
+      displayLoggedOutContent();
+  }
+});
+
+function displayLoggedInContent() {
+  // Sélectionnez les éléments que vous souhaitez afficher/cacher
+  const loggedInElements = document.querySelectorAll('.logged-in');
+  const loggedOutElements = document.querySelectorAll('.logged-out');
+
+  // Affichez les éléments pour les utilisateurs connectés
+  loggedInElements.forEach(el => el.style.display = 'block');
+  
+  // Cachez les éléments qui ne doivent être visibles que pour les utilisateurs non connectés
+  loggedOutElements.forEach(el => el.style.display = 'none');
+}
+
+function displayLoggedOutContent() {
+  const loggedInElements = document.querySelectorAll('.logged-in');
+  const loggedOutElements = document.querySelectorAll('.logged-out');
+
+  // L'inverse de displayLoggedInContent
+  loggedInElements.forEach(el => el.style.display = 'none');
+  loggedOutElements.forEach(el => el.style.display = 'block');
+}
+
+
+
+
+
+// LOGOUT //
+function logoutUser() {
+  localStorage.removeItem('authToken');
+  window.location.href = './index.html'; // Redirigez vers la page de connexion
+}
+
+// Attachez cette fonction à votre bouton ou lien de déconnexion
+document.querySelector('.logout-link').addEventListener('click', logoutUser);

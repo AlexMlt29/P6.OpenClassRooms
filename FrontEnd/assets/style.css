@@ -282,7 +282,7 @@ footer nav li {
   left: -100px;
 }
 
-/**** Work in progress ****/
+/**** Filter ****/
 
 #filter-container {
   width: 100%;
@@ -391,4 +391,28 @@ input[type="password"] {
   bottom: 0;
   left: 0;
   width: 100%;
+}
+
+/**** LOGGED IN ****/
+#edit {
+  width: 100vw;
+  position: relative;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  height: 59px;
+  background-color: #000000;
+  color: #ffffff;
+}
+
+.display {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.content {
+  margin-top: 20px;
 }
