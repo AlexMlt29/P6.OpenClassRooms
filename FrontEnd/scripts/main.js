@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
   // Effectue une requête GET à l'API pour récupérer les données des travaux
   fetch("http://localhost:5678/api/works")
     .then((response) => response.json()) // Convertit la réponse en JSON
-    .then(updatePortfolio) // Appelle updatePortfolio avec les données JSON converties
+    .then(updatePortfolio) // objet de la réponse est passé en argument automatiquement à la fonction (updatePortfolio) grace au .then
+    // .then((works) => {
+    //   updatePortfolio(works)}) // Appelle updatePortfolio avec les données JSON converties
     .catch((error) => console.error("Fetch operation error:", error)); // Capture et affiche les erreurs de la requête fetch
 });
 
@@ -20,7 +22,7 @@ function updatePortfolio(works) {
 
     // Boucle sur chaque travail reçu de l'API
     works.forEach((work) => {
-      const div = document.createElement("div"); // Crée un nouvel élément div
+      const div = document.createElement("figure"); // Crée un nouvel élément div
       div.className = "work-item"; // Attribue une classe pour le style
       // Définit le contenu HTML de div, y compris l'image et la légende avec les données du travail
       div.innerHTML = `
