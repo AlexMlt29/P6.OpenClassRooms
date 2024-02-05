@@ -169,3 +169,64 @@ function logoutUser() {
 
 // Attachez cette fonction à votre bouton ou lien de déconnexion
 document.querySelector('.logout-link').addEventListener('click', logoutUser);
+
+//////////////////////////////////////////////////////////// MODAL PANEL ////////////////////////////////////////////////////////////
+
+// Récupération des éléments
+var modal = document.getElementById("modalPortfolio");
+var btn = document.getElementById("openModalButton");
+var span = document.getElementById("closeModalButton");
+
+// Ouvrir le modal
+btn.onclick = function() {
+  modal.style.display = "block";
+  document.body.classList.add('modal-open'); // Ajoute la classe pour empêcher le défilement
+}
+
+// Fermer le modal en cliquant sur le (x)
+span.onclick = function() {
+  modal.style.display = "none";
+  document.body.classList.remove('modal-open'); // Enlève la classe pour permettre le défilement
+}
+
+// Fermer le modal en cliquant en dehors du contenu du modal
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+    document.body.classList.remove('modal-open'); // Enlève la classe pour permettre le défilement
+  }
+}
+
+//////////////////////////////////////////////////////////// MODAL DISPLAY GALERIE ////////////////////////////////////////////////////////////
+
+// Attache un écouteur d'événements qui exécute la fonction callback une fois que le contenu du DOM est chargé
+document.addEventListener("DOMContentLoaded", function () {
+  // Effectue une requête GET à l'API pour récupérer les données des travaux
+  fetch("http://localhost:5678/api/works")
+    .then((response) => response.json()) // Convertit la réponse en JSON
+    .then(updateModalPortfolio) // objet de la réponse est passé en argument automatiquement à la fonction (updatePortfolio) grace au .then
+    // .then((works) => {
+    //   updatePortfolio(works)}) // Appelle updatePortfolio avec les données JSON converties
+    .catch((error) => console.error("Fetch operation error:", error)); // Capture et affiche les erreurs de la requête fetch
+});
+
+// Définit une fonction pour mettre à jour le contenu de la section portfolio
+function updateModalPortfolio(works) {
+  // Sélectionne l'élément du DOM où les travaux seront insérés
+  const modalGallery = document.querySelector("#modalPortfolio .modalGallery");
+
+  // Vérifie si l'élément existe pour éviter les erreurs lors de l'accès à innerHTML
+  if (modalGallery) {
+    modalGallery.innerHTML = ""; // Efface le contenu actuel de l'élément gallery
+
+    // Boucle sur chaque travail reçu de l'API
+    works.forEach((work) => {
+      const div = document.createElement("figure"); // Crée un nouvel élément div
+      div.className = "modal-item"; // Attribue une classe pour le style
+      // Définit le contenu HTML de div, y compris l'image et la légende avec les données du travail
+      div.innerHTML = `
+          <img src="${work.imageUrl}" alt="Image de ${work.title}">`;
+      modalGallery.appendChild(div); // Ajoute la div au conteneur gallery dans le DOM
+    });
+  }
+}

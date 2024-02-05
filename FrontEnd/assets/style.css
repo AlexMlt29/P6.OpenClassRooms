@@ -438,4 +438,108 @@ input[type="password"] {
   font-weight: 400;
   font-family: "work sans";
   font-size: 14px;
+  cursor: pointer;
+}
+
+/*** test content ***/
+
+/* Le style du fond */
+.modal {
+  display: none; /* Caché par défaut */
+  position: fixed; /* Reste en place */
+  z-index: 1; /* Situé au-dessus */
+  left: 0;
+  top: 0;
+  width: 100%; /* Pleine largeur */
+  height: 100%; /* Pleine hauteur */
+  overflow: auto; /* Permet de scroller si nécessaire */
+  background-color: rgb(0,0,0); /* Couleur de fond */
+  background-color: rgba(0,0,0,0.4); /* Noir avec opacité */
+}
+
+/* Le style du contenu du modal */
+.modal-content {
+  background-color: #fefefe;
+  border: 1px solid #888;
+  border-radius: 10px;
+  width: 428px;
+  height: auto;
+  position: absolute;
+  top: 15%;
+  left: 30%;
+  padding: 50px 100px;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* Le bouton de fermeture (x) */
+.close {
+  color: black;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 600;
+  display: flex;
+  text-align: center;
+  position: relative;
+  top: 5%;
+  font-family: "Work sans";
+  color: black;
+}
+
+.modalGallery {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 10px;
+  margin-bottom: -20px;
+}
+
+.modalGallery figure {
+  margin-bottom: 30px;
+}
+
+.modal-item {
+  display: flex;
+  width: 76.86px;
+  height: 102.57px;
+}
+
+.modalDisplayButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modalButton {
+  width: 237px;
+  height: 36px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #1D6154;
+  color: #FFFEF8;
+  cursor: pointer;
+  outline: none;
+  font-family: "Syne";
+}
+
+.line-separator {
+  border-top: 1px solid #B3B3B3;
+  padding: 0 12.6%;
+  margin: 50px 0;
 }
