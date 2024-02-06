@@ -70,11 +70,39 @@
       <section id="modalPortfolio" class="modal">
         <div class="modal-content">
           <span id="closeModalButton" class="close">&times;</span>
-          <h1 class="title">Galerie photo</h1>
+          <h1 class="photo-title">Galerie photo</h1>
           <div class="modalGallery"></div>
           <div class="line-separator"></div>
           <div class="modalDisplayButton">
-            <button class="modalButton">Ajouter une photo</button>
+            <button id="openAddProjectModalButton">Ajouter une photo</button>
+          </div>
+        </div>
+      </section>
+      <section id="addProjectModal" class="modal">
+        <div class="modal-content">
+          <span id="closeAddModalButton" class="close">&times;</span>
+          <h1 class="photo-title">Ajout photo</h1>
+          <div class="add-photo"></div>
+          <form id="add-project">
+            <div class="input-project">
+              <label for="title">Titre</label>
+              <input type="text" id="title" name="title" required autocomplete="title" />
+            </div>
+            <div class="input-project">
+              <label for="category">Catégorie</label>
+              <div class="custom-select">
+                <select id="category" name="category[]" required multiple>
+                  <option value="choix1">Choix 1</option>
+                  <option value="choix2">Choix 2</option>
+                  <option value="choix3">Choix 3</option>
+                </select>
+                <div class="select-arrow"></div>
+              </div>
+            </div>
+          </form>
+          <div class="line-separator"></div>
+          <div class="modalDisplayButton">
+            <button class="validation">Valider</button>
           </div>
         </div>
       </section>

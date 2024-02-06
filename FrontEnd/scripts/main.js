@@ -39,24 +39,24 @@ function updatePortfolio(works) {
 function createFilterButtons(categories) {
   // Récupération de l'élément DOM avec l'identifiant 'filter-container'. Assurez-vous que cet élément existe dans votre code HTML.
   const filterContainer = document.getElementById("filter-container");
-  
+
   // Boucle sur chaque objet catégorie dans le tableau des catégories.
   categories.forEach((category) => {
     // Crée un nouvel élément de bouton dans le DOM.
     const button = document.createElement("button");
-    
+
     // Définit le texte du bouton avec la propriété 'name' de l'objet catégorie.
     button.textContent = category.name;
-    
+
     // Ajoute une classe CSS 'filter-button' au bouton pour le styliser.
     button.className = "filter-button";
-    
+
     // Ajoute un attribut de données personnalisé 'data-category-id' au bouton, contenant l'id de la catégorie.
     button.dataset.categoryId = category.id;
-    
+
     // Attache un écouteur d'événements au bouton qui, lorsqu'il est cliqué, invoque la fonction filterWorksByCategory avec l'id de la catégorie comme argument.
     button.addEventListener("click", () => filterWorksByCategory(category.id));
-    
+
     // Ajoute le bouton nouvellement créé à l'élément filterContainer dans le DOM.
     filterContainer.appendChild(button);
   });
@@ -108,50 +108,49 @@ function getCategoriesFromWorks() {
 // Écouteur d'événements pour s'assurer que le DOM est chargé avant de créer les boutons de filtre
 document.addEventListener("DOMContentLoaded", getCategoriesFromWorks);
 
-
 //////////////////////////////////////////////////////////// LOGGEG IN PAGE ////////////////////////////////////////////////////////////
 
 // Attache un écouteur d'événements au document qui se déclenchera après le chargement complet du DOM.
-document.addEventListener('DOMContentLoaded', (event) => {
+document.addEventListener("DOMContentLoaded", (event) => {
   // Récupère la valeur de 'authToken' du stockage local du navigateur. Cette valeur est utilisée pour déterminer si l'utilisateur est actuellement connecté.
-  const authToken = localStorage.getItem('authToken');
+  const authToken = localStorage.getItem("authToken");
 
   // Vérifie si 'authToken' existe, ce qui indiquerait que l'utilisateur est connecté.
   if (authToken) {
-      // Si un token d'authentification est présent, cela signifie que l'utilisateur est connecté.
-      // Appelle la fonction displayLoggedInContent pour afficher les éléments de l'interface utilisateur réservés aux utilisateurs connectés.
-      displayLoggedInContent();
+    // Si un token d'authentification est présent, cela signifie que l'utilisateur est connecté.
+    // Appelle la fonction displayLoggedInContent pour afficher les éléments de l'interface utilisateur réservés aux utilisateurs connectés.
+    displayLoggedInContent();
   } else {
-      // Si aucun token d'authentification n'est présent, cela signifie que l'utilisateur n'est pas connecté.
-      // Appelle la fonction displayLoggedOutContent pour cacher les éléments de l'interface utilisateur qui sont seulement pour les utilisateurs connectés et/ou pour afficher les éléments pour les visiteurs non connectés.
-      displayLoggedOutContent();
+    // Si aucun token d'authentification n'est présent, cela signifie que l'utilisateur n'est pas connecté.
+    // Appelle la fonction displayLoggedOutContent pour cacher les éléments de l'interface utilisateur qui sont seulement pour les utilisateurs connectés et/ou pour afficher les éléments pour les visiteurs non connectés.
+    displayLoggedOutContent();
   }
 });
 
 // Fonction pour gérer l'affichage des éléments destinés aux utilisateurs connectés.
 function displayLoggedInContent() {
   // Sélectionne tous les éléments HTML qui ont la classe 'logged-in'. Ces éléments sont supposés être visibles seulement pour les utilisateurs connectés.
-  const loggedInElements = document.querySelectorAll('.logged-in');
-  
+  const loggedInElements = document.querySelectorAll(".logged-in");
+
   // Sélectionne tous les éléments HTML qui ont la classe 'logged-out'. Ces éléments sont supposés être cachés lorsque l'utilisateur est connecté.
-  const loggedOutElements = document.querySelectorAll('.logged-out');
-  
+  const loggedOutElements = document.querySelectorAll(".logged-out");
+
   // Parcourt tous les éléments destinés uniquement aux visiteurs non connectés et les cache en réglant leur propriété de style 'display' sur 'none'.
   // Cela les rend invisibles dans l'interface utilisateur.
-  loggedOutElements.forEach(el => el.style.display = 'none');
+  loggedOutElements.forEach((el) => (el.style.display = "none"));
 }
 
 // Fonction conçue pour gérer l'affichage des éléments de la page web lorsque l'utilisateur n'est pas connecté.
 function displayLoggedOutContent() {
   // Sélectionne tous les éléments du document qui possèdent la classe 'logged-in'. Ces éléments sont généralement destinés à être affichés uniquement aux utilisateurs connectés.
-  const loggedInElements = document.querySelectorAll('.logged-in');
-  
+  const loggedInElements = document.querySelectorAll(".logged-in");
+
   // Sélectionne tous les éléments du document qui possèdent la classe 'logged-out'. Ces éléments sont généralement destinés à être affichés uniquement aux utilisateurs non connectés.
-  const loggedOutElements = document.querySelectorAll('.logged-out');
+  const loggedOutElements = document.querySelectorAll(".logged-out");
 
   // Parcourt tous les éléments qui sont censés être visibles uniquement pour les utilisateurs connectés et les cache en définissant leur propriété CSS 'display' sur 'none'.
   // Cette action rend ces éléments invisibles dans l'interface utilisateur, ce qui est l'effet inverse de ce que fait la fonction displayLoggedInContent.
-  loggedInElements.forEach(el => el.style.display = 'none');
+  loggedInElements.forEach((el) => (el.style.display = "none"));
 }
 
 ////////////////////////////////////////////////////////////// LOGOUT //////////////////////////////////////////////////////////////
@@ -160,41 +159,111 @@ function displayLoggedOutContent() {
 function logoutUser() {
   // Supprime le token d'authentification du stockage local du navigateur.
   // C'est une étape de nettoyage courante lors de la déconnexion, car elle efface les preuves de l'authentification de l'utilisateur.
-  localStorage.removeItem('authToken');
-  
+  localStorage.removeItem("authToken");
+
   // Redirige le navigateur vers 'index.html'.
   // Cela est généralement utilisé pour renvoyer l'utilisateur à la page de connexion ou à la page d'accueil du site après la déconnexion.
-  window.location.href = './index.html';
+  window.location.href = "./index.html";
 }
 
 // Attachez cette fonction à votre bouton ou lien de déconnexion
-document.querySelector('.logout-link').addEventListener('click', logoutUser);
+document.querySelector(".logout-link").addEventListener("click", logoutUser);
 
 //////////////////////////////////////////////////////////// MODAL PANEL ////////////////////////////////////////////////////////////
 
 // Récupération des éléments
-var modal = document.getElementById("modalPortfolio");
-var btn = document.getElementById("openModalButton");
-var span = document.getElementById("closeModalButton");
+const modal = document.getElementById("modalPortfolio");
+const addModal = document.getElementById("addProjectModal")
+const button = document.getElementById("openModalButton");
+const spanModal = document.getElementById("closeModalButton");
+const spanAddModal = document.getElementById("closeAddModalButton");
+const btnOpenAddProjectModal = document.getElementById("openAddProjectModalButton");
 
-// Ouvrir le modal
-btn.onclick = function() {
+// Attacher les écouteurs d'événements quand le modal s'ouvre
+button.onclick = function () {
   modal.style.display = "block";
-  document.body.classList.add('modal-open'); // Ajoute la classe pour empêcher le défilement
-}
+  document.body.classList.add("modal-open"); // Ajoute la classe pour empêcher le défilement
+
+  // Attacher les écouteurs d'événements aux icônes de la corbeille ici
+  attachDeleteEventListeners();
+};
 
 // Fermer le modal en cliquant sur le (x)
-span.onclick = function() {
+spanModal.onclick = function () {
   modal.style.display = "none";
-  document.body.classList.remove('modal-open'); // Enlève la classe pour permettre le défilement
+  document.body.classList.remove("modal-open"); // Enlève la classe pour permettre le défilement
+};
+
+// Fermer le modal en cliquant sur le (x)
+spanAddModal.onclick = function () {
+  addModal.style.display = "none";
+  document.body.classList.remove("modal-open"); // Enlève la classe pour permettre le défilement
+};
+
+// Gérez la fermeture du second modal lorsque l'utilisateur clique en dehors
+window.onclick = function (event) {
+  if (event.target == modalPortfolio) {
+    modalPortfolio.style.display = "none";
+  }
+  if (event.target == addProjectModal) {
+    addProjectModal.style.display = "none";
+  }
+  // Retirez les classes ajoutées au body si nécessaire
+};
+
+///////// close first and open second modal //////////
+
+// Fonction pour ouvrir le second modal et fermer le premier
+btnOpenAddProjectModal.onclick = function () {
+  // Fermez le premier modal
+  modalPortfolio.style.display = "none";
+  // Ouvrez le second modal
+  addProjectModal.style.display = "block";
+  // Ajoutez une nouvelle classe au body si nécessaire pour empêcher le défilement pendant que le second modal est ouvert
+};
+
+//////// delete part galery JS ///////
+
+function attachDeleteEventListeners() {
+  document.querySelectorAll(".modal .trash").forEach((icon) => {
+    // S'assurer de ne pas attacher plusieurs fois le même écouteur d'événement
+    icon.removeEventListener("click", handleTrashClick);
+    icon.addEventListener("click", handleTrashClick);
+  });
 }
 
-// Fermer le modal en cliquant en dehors du contenu du modal
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-    document.body.classList.remove('modal-open'); // Enlève la classe pour permettre le défilement
-  }
+function handleTrashClick(event) {
+  event.preventDefault();
+  event.stopPropagation();
+
+  const workId = this.dataset.workId;
+  deleteWorkById(workId);
+}
+
+function deleteWorkById(workId) {
+  const url = `http://localhost:5678/api/works/${workId}`;
+
+  fetch(url, {
+    method: "DELETE",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      // Ajoutez d'autres en-têtes si nécessaire
+    },
+  })
+    .then((response) => {
+      if (response.ok) {
+        // Si la requête a réussi, retirez l'élément du DOM ou mettez à jour l'interface utilisateur comme nécessaire
+        // Par exemple, si chaque projet est dans une figure avec un id correspondant, on pourrait faire:
+        document.querySelector(`[data-work-id="${workId}"]`).parentElement.remove();
+      } else {
+        // Si l'API retourne une erreur, vous pouvez gérer ici, comme afficher un message
+        alert("La suppression a échoué.");
+      }
+    })
+    .catch((error) => {
+      // En cas d'erreur réseau ou d'erreur lors de l'exécution de la requête fetch
+      console.error("Erreur de réseau ou lors de la requête:", error);
+    });
 }
 
 //////////////////////////////////////////////////////////// MODAL DISPLAY GALERIE ////////////////////////////////////////////////////////////
@@ -225,8 +294,14 @@ function updateModalPortfolio(works) {
       div.className = "modal-item"; // Attribue une classe pour le style
       // Définit le contenu HTML de div, y compris l'image et la légende avec les données du travail
       div.innerHTML = `
-          <img src="${work.imageUrl}" alt="Image de ${work.title}">`;
-      modalGallery.appendChild(div); // Ajoute la div au conteneur gallery dans le DOM
+        <div class="trash" data-work-id="${work.id}"><i class="fa-solid fa-trash-can"></i></div>
+        <img src="${work.imageUrl}" alt="Image de ${work.title}">`;
+      modalGallery.appendChild(div);
+
+      // Ajoutez immédiatement après avoir défini innerHTML
+      div.querySelector(".trash").setAttribute("data-work-id", work.id);
     });
   }
 }
+
+//////////////////////////////////////////// TEST ////////////////////////////////////////////////////////////////

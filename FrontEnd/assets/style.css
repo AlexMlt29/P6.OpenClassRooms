@@ -480,6 +480,9 @@ body.modal-open {
   float: right;
   font-size: 28px;
   font-weight: bold;
+  position: relative;
+  left: 60px;
+  top: -20px;
 }
 
 .close:hover,
@@ -488,7 +491,7 @@ body.modal-open {
   cursor: pointer;
 }
 
-.title {
+.photo-title {
   font-size: 26px;
   font-weight: 600;
   display: flex;
@@ -497,6 +500,7 @@ body.modal-open {
   top: 5%;
   font-family: "Work sans";
   color: black;
+  margin-bottom: 50px;
 }
 
 .modalGallery {
@@ -517,6 +521,8 @@ body.modal-open {
   display: flex;
   width: 76.86px;
   height: 102.57px;
+  position: relative;
+  right: 16.5px;
 }
 
 .modalDisplayButton {
@@ -525,7 +531,7 @@ body.modal-open {
   align-items: center;
 }
 
-.modalButton {
+#openAddProjectModalButton {
   width: 237px;
   height: 36px;
   padding: 10px 20px;
@@ -542,4 +548,70 @@ body.modal-open {
   border-top: 1px solid #B3B3B3;
   padding: 0 12.6%;
   margin: 50px 0;
+}
+
+.trash {
+  width: 7px;
+  height: 7px;
+  position: relative;
+  left: 71px;
+  top: 5px;
+  background-color: black;
+  padding: 5px 5px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.fa-trash-can {
+  color: white;
+  font-size: 8px;
+  position: relative;
+  top: -5px;
+}
+
+.add-photo {
+  width: 420px;
+  height: 169px;
+  background-color: #E8F1F6;
+  margin-bottom: 30px;
+}
+
+input[id="title"],
+input[id="category"] {
+  width: 400px;
+}
+
+input[id="title"] {
+  margin-bottom: 30px;
+}
+
+.custom-select {
+  position: relative;
+  width: 100%;
+  display: inline-block;
+}
+
+.custom-select select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  background-color: #fff; /* Ajoutez la couleur de fond souhaitée */
+}
+
+.validation {
+  width: 237px;
+  height: 36px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #A7A7A7;
+  color: #FFFEF8;
+  cursor: pointer;
+  outline: none;
+  font-family: "Syne";
 }
