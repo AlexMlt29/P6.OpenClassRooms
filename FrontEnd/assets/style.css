@@ -361,7 +361,7 @@ input[type="password"] {
   height: 31px;
   padding: 10px;
   border: none;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
 
 .button {
@@ -441,8 +441,6 @@ input[type="password"] {
   cursor: pointer;
 }
 
-/*** test content ***/
-
 /* Le style du fond */
 .modal {
   display: none; /* Caché par défaut */
@@ -462,7 +460,7 @@ input[type="password"] {
   background-color: #fefefe;
   border: 1px solid #888;
   border-radius: 10px;
-  width: 428px;
+  width: 420px;
   height: auto;
   position: absolute;
   top: 15%;
@@ -509,7 +507,7 @@ body.modal-open {
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  gap: 10px;
+  gap: 8.9px;
   margin-bottom: -20px;
 }
 
@@ -545,6 +543,7 @@ body.modal-open {
 }
 
 .line-separator {
+  width: 314.19px;
   border-top: 1px solid #B3B3B3;
   padding: 0 12.6%;
   margin: 50px 0;
@@ -564,25 +563,55 @@ body.modal-open {
 
 .fa-trash-can {
   color: white;
-  font-size: 8px;
+  font-size: 11px;
   position: relative;
-  top: -5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: -2px;
 }
 
 .add-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
   width: 420px;
   height: 169px;
   background-color: #E8F1F6;
   margin-bottom: 30px;
 }
 
-input[id="title"],
-input[id="category"] {
-  width: 400px;
+#imagePreview {
+  max-width: 100%;
+  max-height: 100%;
+  top: 0;
+  left: 0;
+  display: none;
+}
+
+.hidden-content {
+  display: none;
 }
 
 input[id="title"] {
+  width: 390px;
   margin-bottom: 30px;
+  padding-left: 20px;
+  font-family: "Work sans";
+  color: #444444;
+  font-size: 14px;
+}
+
+#category {
+  width: 420px;
+  height: 51px;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+  border: none;
+  font-family: "Work sans";
+  color: #444444;
+  font-size: 14px;
+  padding-left: 20px;
 }
 
 .custom-select {
@@ -600,7 +629,7 @@ input[id="title"] {
   -moz-appearance: none;
   appearance: none;
   cursor: pointer;
-  background-color: #fff; /* Ajoutez la couleur de fond souhaitée */
+  background-color: #fff;
 }
 
 .validation {
@@ -614,4 +643,43 @@ input[id="title"] {
   cursor: pointer;
   outline: none;
   font-family: "Syne";
+}
+
+.fa-arrow-left {
+  color: black;
+  font-size: 20px;
+  position: relative;
+  left: -60px;
+  top: -14px;
+  cursor: pointer;
+}
+
+.add-photo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#picture {
+  width: 76px;
+  height: 76px;
+}
+
+.buttonAddPhoto {
+  width: 173px;
+  height: 36px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 20px;
+  background-color: #CBD6DC;
+  color: #306685;
+  cursor: pointer;
+  outline: none;
+  font-family: "Syne";
+}
+
+.buttonText {
+  font-size: 10px;
 }

@@ -173,11 +173,13 @@ document.querySelector(".logout-link").addEventListener("click", logoutUser);
 
 // Récupération des éléments
 const modal = document.getElementById("modalPortfolio");
-const addModal = document.getElementById("addProjectModal")
+const addModal = document.getElementById("addProjectModal");
 const button = document.getElementById("openModalButton");
 const spanModal = document.getElementById("closeModalButton");
 const spanAddModal = document.getElementById("closeAddModalButton");
 const btnOpenAddProjectModal = document.getElementById("openAddProjectModalButton");
+const returnFirstModal = document.getElementById("returnArrow");
+const addPhotoButton = document.querySelector(".buttonAddPhoto");
 
 // Attacher les écouteurs d'événements quand le modal s'ouvre
 button.onclick = function () {
@@ -222,7 +224,46 @@ btnOpenAddProjectModal.onclick = function () {
   // Ajoutez une nouvelle classe au body si nécessaire pour empêcher le défilement pendant que le second modal est ouvert
 };
 
-//////// delete part galery JS ///////
+returnFirstModal.onclick = function () {
+  modalPortfolio.style.display = "block";
+
+  addProjectModal.style.display = "none";
+};
+
+// Ajoutez un écouteur d'événements pour le clic
+addPhotoButton.addEventListener("click", function () {
+  // Déclenchez le clic sur l'input de type file
+  document.getElementById("fileInput").click();
+});
+
+///////////////////// modal add photos /////////////////////
+
+document.addEventListener('DOMContentLoaded', function() {
+  const fileInput = document.getElementById('fileInput');
+  const imagePreview = document.getElementById('imagePreview');
+  const backgroundPicture = document.getElementById('picture');
+  const addPhotoButton = document.querySelector('.buttonAddPhoto');
+  const buttonText = document.querySelector('.buttonText');
+
+  if (fileInput && imagePreview && addPhotoButton && buttonText) {
+    fileInput.addEventListener('change', function() {
+      var file = this.files[0];
+      if (file && window.FileReader) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+          imagePreview.src = e.target.result;
+          imagePreview.style.display = 'block';
+          addPhotoButton.classList.add('hidden-content');
+          buttonText.classList.add('hidden-content');
+          backgroundPicture.classList.add('hidden-content');
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+  }
+});
+
+//////// modal delete part galery JS ///////
 
 function attachDeleteEventListeners() {
   document.querySelectorAll(".modal .trash").forEach((icon) => {

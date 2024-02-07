@@ -80,9 +80,16 @@
       </section>
       <section id="addProjectModal" class="modal">
         <div class="modal-content">
+          <i id="returnArrow" class="fa-solid fa-arrow-left"></i>
           <span id="closeAddModalButton" class="close">&times;</span>
           <h1 class="photo-title">Ajout photo</h1>
-          <div class="add-photo"></div>
+          <div class="add-photo">
+            <img id="imagePreview" alt="Aperçu de l'image" style="display: none;" />
+            <img id="picture" src="./assets/images/picture.svg" alt="zone de photos à ajouter pour le formulaire">
+            <input type="file" id="fileInput" accept=".jpg, .jpeg, .png" style="display: none;" />
+            <button class="buttonAddPhoto">+ Ajouter photo</button>
+            <span class="buttonText">jpg, png : 4mo max</span>
+          </div>          
           <form id="add-project">
             <div class="input-project">
               <label for="title">Titre</label>
@@ -90,14 +97,12 @@
             </div>
             <div class="input-project">
               <label for="category">Catégorie</label>
-              <div class="custom-select">
-                <select id="category" name="category[]" required multiple>
-                  <option value="choix1">Choix 1</option>
-                  <option value="choix2">Choix 2</option>
-                  <option value="choix3">Choix 3</option>
-                </select>
-                <div class="select-arrow"></div>
-              </div>
+              <select id="category" name="test">
+                <option value=""></option>
+                <option value="Objets">Objets</option>
+                <option value="Appartements">Appartements</option>
+                <option value="Hotels & restaurants">Hotels & restaurants</option>
+              </select>
             </div>
           </form>
           <div class="line-separator"></div>
