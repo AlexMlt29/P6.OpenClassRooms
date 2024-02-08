@@ -683,3 +683,12 @@ input[id="title"] {
 .buttonText {
   font-size: 10px;
 }
+
+#modalError-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  display:none; 
+  color:red;
+  margin-bottom: 30px;
+}

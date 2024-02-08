@@ -8,7 +8,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/style.css" />
   </head>
   <body>
@@ -83,13 +83,14 @@
           <i id="returnArrow" class="fa-solid fa-arrow-left"></i>
           <span id="closeAddModalButton" class="close">&times;</span>
           <h1 class="photo-title">Ajout photo</h1>
+          <div id="modalError-message"></div>
           <div class="add-photo">
-            <img id="imagePreview" alt="Aperçu de l'image" style="display: none;" />
-            <img id="picture" src="./assets/images/picture.svg" alt="zone de photos à ajouter pour le formulaire">
-            <input type="file" id="fileInput" accept=".jpg, .jpeg, .png" style="display: none;" />
+            <img id="imagePreview" alt="Aperçu de l'image" style="display: none" />
+            <img id="picture" src="./assets/images/picture.svg" alt="zone de photos à ajouter pour le formulaire" />
+            <input type="file" id="fileInput" accept=".jpg, .jpeg, .png" style="display: none" />
             <button class="buttonAddPhoto">+ Ajouter photo</button>
             <span class="buttonText">jpg, png : 4mo max</span>
-          </div>          
+          </div>
           <form id="add-project">
             <div class="input-project">
               <label for="title">Titre</label>
@@ -97,18 +98,18 @@
             </div>
             <div class="input-project">
               <label for="category">Catégorie</label>
-              <select id="category" name="test">
-                <option value=""></option>
-                <option value="Objets">Objets</option>
-                <option value="Appartements">Appartements</option>
-                <option value="Hotels & restaurants">Hotels & restaurants</option>
+              <select id="category" name="category" required autocomplete="category">
+                <option></option>
+                <option value="1">Objets</option>
+                <option value="2">Appartements</option>
+                <option value="3">Hotels & restaurants</option>
               </select>
             </div>
+            <div class="line-separator"></div>
+            <div class="modalDisplayButton">
+              <button class="validation" type="submit">Valider</button>
+            </div>
           </form>
-          <div class="line-separator"></div>
-          <div class="modalDisplayButton">
-            <button class="validation">Valider</button>
-          </div>
         </div>
       </section>
     </main>

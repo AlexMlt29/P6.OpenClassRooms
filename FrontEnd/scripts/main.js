@@ -1,4 +1,4 @@
-////////////////////////////////////////////////////////// GALLERY ////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////// GALLERIE ////////////////////////////////////////////////////////////
 
 // Attache un écouteur d'événements qui exécute la fonction callback une fois que le contenu du DOM est chargé
 document.addEventListener("DOMContentLoaded", function () {
@@ -33,7 +33,7 @@ function updatePortfolio(works) {
   }
 }
 
-//////////////////////////////////////////////////////////// FILTER ////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////// Filtre ////////////////////////////////////////////////////////////
 
 // Fonction pour créer les boutons de filtre une fois que les données de catégorie sont récupérées
 function createFilterButtons(categories) {
@@ -108,7 +108,7 @@ function getCategoriesFromWorks() {
 // Écouteur d'événements pour s'assurer que le DOM est chargé avant de créer les boutons de filtre
 document.addEventListener("DOMContentLoaded", getCategoriesFromWorks);
 
-//////////////////////////////////////////////////////////// LOGGEG IN PAGE ////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////// Connection sur la page ////////////////////////////////////////////////////////////
 
 // Attache un écouteur d'événements au document qui se déclenchera après le chargement complet du DOM.
 document.addEventListener("DOMContentLoaded", (event) => {
@@ -153,7 +153,7 @@ function displayLoggedOutContent() {
   loggedInElements.forEach((el) => (el.style.display = "none"));
 }
 
-////////////////////////////////////////////////////////////// LOGOUT //////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////// Déconnection //////////////////////////////////////////////////////////////
 
 // Fonction définie pour gérer la déconnexion d'un utilisateur.
 function logoutUser() {
@@ -169,7 +169,7 @@ function logoutUser() {
 // Attachez cette fonction à votre bouton ou lien de déconnexion
 document.querySelector(".logout-link").addEventListener("click", logoutUser);
 
-//////////////////////////////////////////////////////////// MODAL PANEL ////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////// Modal ouverture/fermeture des modaux ////////////////////////////////////////////////////////////
 
 // Récupération des éléments
 const modal = document.getElementById("modalPortfolio");
@@ -213,7 +213,7 @@ window.onclick = function (event) {
   // Retirez les classes ajoutées au body si nécessaire
 };
 
-///////// close first and open second modal //////////
+//////////////////////////////////// Ferme le premier modal et ouvre le second /////////////////////////////////////
 
 // Fonction pour ouvrir le second modal et fermer le premier
 btnOpenAddProjectModal.onclick = function () {
@@ -236,26 +236,36 @@ addPhotoButton.addEventListener("click", function () {
   document.getElementById("fileInput").click();
 });
 
-///////////////////// modal add photos /////////////////////
+/////////////////////////////////////// Modal ajout de la prévisualisation images ///////////////////////////////////////
 
-document.addEventListener('DOMContentLoaded', function() {
-  const fileInput = document.getElementById('fileInput');
-  const imagePreview = document.getElementById('imagePreview');
-  const backgroundPicture = document.getElementById('picture');
-  const addPhotoButton = document.querySelector('.buttonAddPhoto');
-  const buttonText = document.querySelector('.buttonText');
+document.addEventListener("DOMContentLoaded", function () {
+  const fileInput = document.getElementById("fileInput");
+  const imagePreview = document.getElementById("imagePreview");
+  const backgroundPicture = document.getElementById("picture");
+  const addPhotoButton = document.querySelector(".buttonAddPhoto");
+  const buttonText = document.querySelector(".buttonText");
+  const modalErrorMessage = document.getElementById("modalError-message");
 
-  if (fileInput && imagePreview && addPhotoButton && buttonText) {
-    fileInput.addEventListener('change', function() {
-      var file = this.files[0];
+  if (fileInput && imagePreview && addPhotoButton && buttonText && modalErrorMessage) {
+    fileInput.addEventListener("change", function () {
+      const file = this.files[0];
       if (file && window.FileReader) {
-        var reader = new FileReader();
-        reader.onload = function(e) {
+        if (file.size > 4 * 1024 * 1024) {
+          // Vérifier si la taille du fichier est supérieure à 4 Mo
+          modalErrorMessage.textContent = "L'image doit faire moins de 4 Mo.";
+          modalErrorMessage.style.display = "flex";
+          imagePreview.style.display = "none"; // Masquer l'aperçu de l'image
+          return; // Arrêter l'exécution
+        }
+
+        const reader = new FileReader();
+        reader.onload = function (e) {
           imagePreview.src = e.target.result;
-          imagePreview.style.display = 'block';
-          addPhotoButton.classList.add('hidden-content');
-          buttonText.classList.add('hidden-content');
-          backgroundPicture.classList.add('hidden-content');
+          imagePreview.style.display = "block";
+          addPhotoButton.classList.add("hidden-content");
+          buttonText.classList.add("hidden-content");
+          backgroundPicture.classList.add("hidden-content");
+          modalErrorMessage.style.display = "none"; // Cacher le message d'erreur
         };
         reader.readAsDataURL(file);
       }
@@ -263,7 +273,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 });
 
-//////// modal delete part galery JS ///////
+//////////////////////////////////////// Modal suppréssion via l'icone poubelle ///////////////////////////////////////
 
 function attachDeleteEventListeners() {
   document.querySelectorAll(".modal .trash").forEach((icon) => {
@@ -307,7 +317,7 @@ function deleteWorkById(workId) {
     });
 }
 
-//////////////////////////////////////////////////////////// MODAL DISPLAY GALERIE ////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////// Modal affichage de la GALERIE ////////////////////////////////////////////////////////////
 
 // Attache un écouteur d'événements qui exécute la fonction callback une fois que le contenu du DOM est chargé
 document.addEventListener("DOMContentLoaded", function () {
@@ -345,4 +355,83 @@ function updateModalPortfolio(works) {
   }
 }
 
-//////////////////////////////////////////// TEST ////////////////////////////////////////////////////////////////
+//////////////////////////////////////////// Boutton valider qui devient vert ////////////////////////////////////////////////////////////////
+
+const imagePreview = document.getElementById("imagePreview"); // Assurez-vous que cet ID est correct
+const titleInput = document.getElementById("title");
+const categorySelect = document.getElementById("category");
+const validateButton = document.querySelector(".validation");
+
+function updateButtonState() {
+  if (imagePreview.style.display !== "none" && titleInput.value.trim() !== "" && categorySelect.value !== "") {
+    validateButton.style.backgroundColor = "#1D6154";
+  } else {
+    validateButton.style.backgroundColor = ""; // Couleur par défaut
+  }
+}
+
+// Ajoutez ici le code qui affiche l'aperçu de l'image et modifie le style de 'imagePreview' après le téléchargement
+// Par exemple, imagePreview.style.display = 'block';
+
+titleInput.addEventListener("input", updateButtonState);
+categorySelect.addEventListener("change", updateButtonState);
+
+//////////////////////////////////////////// Modal ajout du projet dans la gallerie ////////////////////////////////////////////////////////////////
+
+document.getElementById("add-project").addEventListener("submit", function (e) {
+  e.preventDefault();
+
+  // Préparer les données de l'image pour l'upload
+  const imageData = new FormData();
+  const imageInput = document.getElementById("fileInput");
+  imageData.append("image", imageInput.files[0]);
+
+  // Effectuer l'upload de l'image
+  fetch("http://localhost:5678/api/works", { // Endpoint pour l'upload d'image
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+    },
+    body: imageData,
+  })
+  .then((response) => {
+    if (!response.ok) {
+      response.json().then(err => console.error("Détails de l'erreur:", err));
+      throw new Error("Échec de l'upload de l'image: " + response.statusText);
+    }
+    return response.json(); // On s'attend à ce que le serveur renvoie l'URL de l'image
+  })
+  .then((data) => {
+    // Récupérer l'URL de l'image et les autres informations du formulaire
+    const title = document.getElementById("title").value;
+    const category = document.getElementById("category").value;
+    const imageUrl = data.imageUrl; // L'URL de l'image doit être fournie par le serveur
+
+    // Créer le projet avec l'URL de l'image
+    return fetch("http://localhost:5678/api/works", { // Endpoint pour créer un projet
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        title,
+        categoryId: category,
+        imageUrl, // Utiliser l'URL de l'image ici
+      }),
+    });
+  })
+  .then((response) => {
+    if (!response.ok) {
+      throw new Error("Échec de la création du projet: " + response.statusText);
+    }
+    return response.json(); // Récupérer les données du projet créé
+  })
+  .then((projectData) => {
+    console.log("Projet créé avec succès:", projectData);
+    // Ici, vous pouvez mettre à jour l'interface utilisateur avec les données du nouveau projet
+  })
+  .catch((error) => {
+    console.error("Erreur:", error);
+  });
+});
