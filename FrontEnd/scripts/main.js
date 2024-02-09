@@ -378,60 +378,36 @@ categorySelect.addEventListener("change", updateButtonState);
 
 //////////////////////////////////////////// Modal ajout du projet dans la gallerie ////////////////////////////////////////////////////////////////
 
-document.getElementById("add-project").addEventListener("submit", function (e) {
-  e.preventDefault();
+document
+  .getElementById("add-project")
+  .addEventListener("submit", function (e) {
+    e.preventDefault();
 
-  // Préparer les données de l'image pour l'upload
-  const imageData = new FormData();
-  const imageInput = document.getElementById("fileInput");
-  imageData.append("image", imageInput.files[0]);
+    // Préparer les données de l'image pour l'upload
+    const formData = new FormData();
 
-  // Effectuer l'upload de l'image
-  fetch("http://localhost:5678/api/works", { // Endpoint pour l'upload d'image
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-    },
-    body: imageData,
-  })
-  .then((response) => {
-    if (!response.ok) {
-      response.json().then(err => console.error("Détails de l'erreur:", err));
-      throw new Error("Échec de l'upload de l'image: " + response.statusText);
-    }
-    return response.json(); // On s'attend à ce que le serveur renvoie l'URL de l'image
-  })
-  .then((data) => {
-    // Récupérer l'URL de l'image et les autres informations du formulaire
-    const title = document.getElementById("title").value;
-    const category = document.getElementById("category").value;
-    const imageUrl = data.imageUrl; // L'URL de l'image doit être fournie par le serveur
+    formData.append('title', document.getElementById("title").value);
+    formData.append('category', document.getElementById("category").value);
+
+    const imageInput = document.getElementById("fileInput");
+    formData.append("image", imageInput.files[0]);
 
     // Créer le projet avec l'URL de l'image
-    return fetch("http://localhost:5678/api/works", { // Endpoint pour créer un projet
+    fetch("http://localhost:5678/api/works", {
+      // Endpoint pour créer un projet
       method: "POST",
       headers: {
         Authorization: `Bearer ${localStorage.getItem("authToken")}`,
-        "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        title,
-        categoryId: category,
-        imageUrl, // Utiliser l'URL de l'image ici
-      }),
+      body: formData
+    })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Échec de la création du projet: " + response.statusText);
+      }
+      return response.json(); // Récupérer les données du projet créé
+    })
+    .catch((error) => {
+      console.error("Erreur:", error);
     });
   })
-  .then((response) => {
-    if (!response.ok) {
-      throw new Error("Échec de la création du projet: " + response.statusText);
-    }
-    return response.json(); // Récupérer les données du projet créé
-  })
-  .then((projectData) => {
-    console.log("Projet créé avec succès:", projectData);
-    // Ici, vous pouvez mettre à jour l'interface utilisateur avec les données du nouveau projet
-  })
-  .catch((error) => {
-    console.error("Erreur:", error);
-  });
-});

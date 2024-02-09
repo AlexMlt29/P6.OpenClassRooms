@@ -489,13 +489,25 @@ body.modal-open {
   cursor: pointer;
 }
 
-.photo-title {
+.gallery-title {
   font-size: 26px;
   font-weight: 600;
   display: flex;
   text-align: center;
   position: relative;
   top: 5%;
+  font-family: "Work sans";
+  color: black;
+  margin-bottom: 50px;
+}
+
+.photo-title {
+  font-size: 26px;
+  font-weight: 600;
+  display: flex;
+  text-align: center;
+  position: relative;
+  top: -20px;
   font-family: "Work sans";
   color: black;
   margin-bottom: 50px;
@@ -650,7 +662,7 @@ input[id="title"] {
   font-size: 20px;
   position: relative;
   left: -60px;
-  top: -14px;
+  top: -15px;
   cursor: pointer;
 }
 
@@ -691,4 +703,6 @@ input[id="title"] {
   display:none; 
   color:red;
   margin-bottom: 30px;
+  position: relative;
+  top: -15px;
 }
