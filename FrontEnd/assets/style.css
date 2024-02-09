@@ -426,7 +426,7 @@ input[type="password"] {
   margin-bottom: 50px;
 }
 
-.project-display {
+#project-button {
   display: flex;
   justify-content: center;
   flex-direction: row;
@@ -513,7 +513,7 @@ body.modal-open {
   margin-bottom: 50px;
 }
 
-.modalGallery {
+.modal-gallery {
   width: 100%;
   height: auto;
   display: flex;
@@ -523,7 +523,7 @@ body.modal-open {
   margin-bottom: -20px;
 }
 
-.modalGallery figure {
+.modal-gallery figure {
   margin-bottom: 30px;
 }
 
@@ -535,13 +535,13 @@ body.modal-open {
   right: 16.5px;
 }
 
-.modalDisplayButton {
+.modal-button {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-#openAddProjectModalButton {
+#add-button {
   width: 237px;
   height: 36px;
   padding: 10px 20px;
@@ -594,11 +594,15 @@ body.modal-open {
   margin-bottom: 30px;
 }
 
-#imagePreview {
+#image-preview {
   max-width: 100%;
   max-height: 100%;
   top: 0;
   left: 0;
+  display: none;
+}
+
+#file-input {
   display: none;
 }
 
@@ -679,7 +683,7 @@ input[id="title"] {
   height: 76px;
 }
 
-.buttonAddPhoto {
+.button-photo {
   width: 173px;
   height: 36px;
   padding: 10px 20px;
@@ -692,11 +696,11 @@ input[id="title"] {
   font-family: "Syne";
 }
 
-.buttonText {
+.button-text {
   font-size: 10px;
 }
 
-#modalError-message {
+#modal-error {
   display: flex;
   align-items: center;
   justify-content: center;

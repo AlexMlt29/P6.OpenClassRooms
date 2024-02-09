@@ -45,7 +45,7 @@
       <section id="portfolio">
         <div id="project" class="logged-in">
           <h2>Mes Projets</h2>
-          <button id="openModalButton" class="project-display">
+          <button id="project-button">
             <i class="fa-regular fa-pen-to-square project-content"></i>
             <p class="project-content">Modifier</p>
           </button>
@@ -67,29 +67,29 @@
           <input type="submit" value="Envoyer" />
         </form>
       </section>
-      <section id="modalPortfolio" class="modal">
+      <section id="modal-portfolio" class="modal">
         <div class="modal-content">
-          <span id="closeModalButton" class="close">&times;</span>
+          <span id="close-button" class="close">&times;</span>
           <h1 class="gallery-title">Galerie photo</h1>
-          <div class="modalGallery"></div>
+          <div class="modal-gallery"></div>
           <div class="line-separator"></div>
-          <div class="modalDisplayButton">
-            <button id="openAddProjectModalButton">Ajouter une photo</button>
+          <div class="modal-button">
+            <button id="add-button">Ajouter une photo</button>
           </div>
         </div>
       </section>
-      <section id="addProjectModal" class="modal">
+      <section id="modal-project" class="modal">
         <div class="modal-content">
-          <i id="returnArrow" class="fa-solid fa-arrow-left"></i>
-          <span id="closeAddModalButton" class="close">&times;</span>
+          <i id="arrow" class="fa-solid fa-arrow-left"></i>
+          <span id="close-add-button" class="close">&times;</span>
           <h1 class="photo-title">Ajout photo</h1>
-          <div id="modalError-message"></div>
+          <div id="modal-error"></div>
           <div class="add-photo">
-            <img id="imagePreview" alt="Aperçu de l'image" style="display: none" />
+            <img id="image-preview" alt="Aperçu de l'image"/>
             <img id="picture" src="./assets/images/picture.svg" alt="zone de photos à ajouter pour le formulaire" />
-            <input type="file" id="fileInput" accept=".jpg, .jpeg, .png" style="display: none" />
-            <button class="buttonAddPhoto">+ Ajouter photo</button>
-            <span class="buttonText">jpg, png : 4mo max</span>
+            <input type="file" id="file-input" accept=".jpg, .jpeg, .png"/>
+            <button class="button-photo">+ Ajouter photo</button>
+            <span class="button-text">jpg, png : 4mo max</span>
           </div>
           <form id="add-project">
             <div class="input-project">
@@ -106,7 +106,7 @@
               </select>
             </div>
             <div class="line-separator"></div>
-            <div class="modalDisplayButton">
+            <div class="modal-button">
               <button class="validation" type="submit">Valider</button>
             </div>
           </form>

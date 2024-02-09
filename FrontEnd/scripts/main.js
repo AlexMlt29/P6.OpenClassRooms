@@ -172,18 +172,18 @@ document.querySelector(".logout-link").addEventListener("click", logoutUser);
 //////////////////////////////////////////////////////////// Modal ouverture/fermeture des modaux ////////////////////////////////////////////////////////////
 
 // Récupération des éléments
-const modal = document.getElementById("modalPortfolio");
-const addModal = document.getElementById("addProjectModal");
-const button = document.getElementById("openModalButton");
-const spanModal = document.getElementById("closeModalButton");
-const spanAddModal = document.getElementById("closeAddModalButton");
-const btnOpenAddProjectModal = document.getElementById("openAddProjectModalButton");
-const returnFirstModal = document.getElementById("returnArrow");
-const addPhotoButton = document.querySelector(".buttonAddPhoto");
+const modalPortfolio = document.getElementById("modal-portfolio");
+const addModal = document.getElementById("modal-project");
+const button = document.getElementById("project-button");
+const spanModal = document.getElementById("close-button");
+const spanAddModal = document.getElementById("close-add-button");
+const btnOpenAddProjectModal = document.getElementById("add-button");
+const returnFirstModal = document.getElementById("arrow");
+const addPhotoButton = document.querySelector(".button-photo");
 
 // Attacher les écouteurs d'événements quand le modal s'ouvre
 button.onclick = function () {
-  modal.style.display = "block";
+  modalPortfolio.style.display = "block";
   document.body.classList.add("modal-open"); // Ajoute la classe pour empêcher le défilement
 
   // Attacher les écouteurs d'événements aux icônes de la corbeille ici
@@ -192,7 +192,7 @@ button.onclick = function () {
 
 // Fermer le modal en cliquant sur le (x)
 spanModal.onclick = function () {
-  modal.style.display = "none";
+  modalPortfolio.style.display = "none";
   document.body.classList.remove("modal-open"); // Enlève la classe pour permettre le défilement
 };
 
@@ -207,8 +207,8 @@ window.onclick = function (event) {
   if (event.target == modalPortfolio) {
     modalPortfolio.style.display = "none";
   }
-  if (event.target == addProjectModal) {
-    addProjectModal.style.display = "none";
+  if (event.target == addModal) {
+    addModal.style.display = "none";
   }
   // Retirez les classes ajoutées au body si nécessaire
 };
@@ -220,31 +220,31 @@ btnOpenAddProjectModal.onclick = function () {
   // Fermez le premier modal
   modalPortfolio.style.display = "none";
   // Ouvrez le second modal
-  addProjectModal.style.display = "block";
+  addModal.style.display = "block";
   // Ajoutez une nouvelle classe au body si nécessaire pour empêcher le défilement pendant que le second modal est ouvert
 };
 
 returnFirstModal.onclick = function () {
   modalPortfolio.style.display = "block";
 
-  addProjectModal.style.display = "none";
+  addModal.style.display = "none";
 };
 
 // Ajoutez un écouteur d'événements pour le clic
 addPhotoButton.addEventListener("click", function () {
   // Déclenchez le clic sur l'input de type file
-  document.getElementById("fileInput").click();
+  document.getElementById("file-input").click();
 });
 
 /////////////////////////////////////// Modal ajout de la prévisualisation images ///////////////////////////////////////
 
 document.addEventListener("DOMContentLoaded", function () {
-  const fileInput = document.getElementById("fileInput");
-  const imagePreview = document.getElementById("imagePreview");
+  const fileInput = document.getElementById("file-input");
+  const imagePreview = document.getElementById("image-preview");
   const backgroundPicture = document.getElementById("picture");
-  const addPhotoButton = document.querySelector(".buttonAddPhoto");
-  const buttonText = document.querySelector(".buttonText");
-  const modalErrorMessage = document.getElementById("modalError-message");
+  const addPhotoButton = document.querySelector(".button-photo");
+  const buttonText = document.querySelector(".button-text");
+  const modalErrorMessage = document.getElementById("modal-error");
 
   if (fileInput && imagePreview && addPhotoButton && buttonText && modalErrorMessage) {
     fileInput.addEventListener("change", function () {
@@ -333,7 +333,7 @@ document.addEventListener("DOMContentLoaded", function () {
 // Définit une fonction pour mettre à jour le contenu de la section portfolio
 function updateModalPortfolio(works) {
   // Sélectionne l'élément du DOM où les travaux seront insérés
-  const modalGallery = document.querySelector("#modalPortfolio .modalGallery");
+  const modalGallery = document.querySelector("#modal-portfolio .modal-gallery");
 
   // Vérifie si l'élément existe pour éviter les erreurs lors de l'accès à innerHTML
   if (modalGallery) {
@@ -357,7 +357,7 @@ function updateModalPortfolio(works) {
 
 //////////////////////////////////////////// Boutton valider qui devient vert ////////////////////////////////////////////////////////////////
 
-const imagePreview = document.getElementById("imagePreview"); // Assurez-vous que cet ID est correct
+const imagePreview = document.getElementById("image-preview"); // Assurez-vous que cet ID est correct
 const titleInput = document.getElementById("title");
 const categorySelect = document.getElementById("category");
 const validateButton = document.querySelector(".validation");
@@ -389,7 +389,7 @@ document
     formData.append('title', document.getElementById("title").value);
     formData.append('category', document.getElementById("category").value);
 
-    const imageInput = document.getElementById("fileInput");
+    const imageInput = document.getElementById("file-input");
     formData.append("image", imageInput.files[0]);
 
     // Créer le projet avec l'URL de l'image
