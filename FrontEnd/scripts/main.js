@@ -40,16 +40,20 @@ function createFilterButtons(categories) {
   // Récupération de l'élément DOM avec l'identifiant 'filter-container'. Assurez-vous que cet élément existe dans votre code HTML.
   const filterContainer = document.getElementById("filter-container");
 
+  // Définir un tableau avec les noms des classes CSS pour les boutons
+  const buttonClasses = ['filter-un', 'filter-deux', 'filter-trois', 'filter-quatre'];
+
   // Boucle sur chaque objet catégorie dans le tableau des catégories.
-  categories.forEach((category) => {
+  categories.forEach((category, index) => {
     // Crée un nouvel élément de bouton dans le DOM.
     const button = document.createElement("button");
 
     // Définit le texte du bouton avec la propriété 'name' de l'objet catégorie.
     button.textContent = category.name;
 
-    // Ajoute une classe CSS 'filter-button' au bouton pour le styliser.
-    button.className = "filter-button";
+    // Ajoute une classe CSS basée sur l'index de la catégorie pour pouvoir styliser individuellement.
+    // Vérifie si l'index a une classe correspondante dans le tableau buttonClasses, sinon utilise une classe par défaut
+    button.className = buttonClasses[index] || 'filter-default';
 
     // Ajoute un attribut de données personnalisé 'data-category-id' au bouton, contenant l'id de la catégorie.
     button.dataset.categoryId = category.id;
@@ -62,6 +66,7 @@ function createFilterButtons(categories) {
   });
 }
 
+
 // Fonction pour filtrer les travaux par catégorie
 // Définit une fonction nommée filterWorksByCategory qui prend un categoryId en argument pour filtrer les travaux par catégorie.
 function filterWorksByCategory(categoryId) {
@@ -70,7 +75,7 @@ function filterWorksByCategory(categoryId) {
     .then((response) => response.json()) // Convertit la réponse de la requête en JSON.
     .then((works) => {
       // Utilise l'opérateur ternaire pour vérifier si categoryId est égal à "Tous". Si oui, il garde tous les travaux, sinon il filtre les travaux où l'id de la catégorie correspond à categoryId.
-      const filteredWorks = categoryId === "Tous" ? works : works.filter((work) => work.category.id === categoryId);
+      const filteredWorks = categoryId === "tous" ? works : works.filter((work) => work.category.id === categoryId);
       // Appelle la fonction updatePortfolio et lui passe les travaux filtrés pour mettre à jour l'affichage sur la page.
       updatePortfolio(filteredWorks);
     })
@@ -97,7 +102,7 @@ function getCategoriesFromWorks() {
 
       // Ajoute manuellement l'option "Tous" en tant que première catégorie dans la liste des catégories,
       // ce qui permettra de filtrer et d'afficher tous les travaux sans filtrage.
-      categories.unshift({ id: "Tous", name: "Tous" });
+      categories.unshift({ id: "tous", name: "Tous" });
 
       // Appelle la fonction createFilterButtons avec le tableau des catégories pour créer des boutons de filtre dans l'UI.
       createFilterButtons(categories);

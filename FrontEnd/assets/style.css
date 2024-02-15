@@ -112,6 +112,9 @@ body {
 ol,
 ul {
   list-style: none;
+  display: flex;
+  position: relative;
+  top: 12px;
 }
 blockquote,
 q {
@@ -155,12 +158,15 @@ h1 {
   font-size: 22px;
   font-weight: 800;
   color: #b1663c;
+  position: relative;
+  left: 10px;
 }
 
 h1 > span {
   font-family: "Work Sans";
-  font-size: 10px;
+  font-size: 9px;
   letter-spacing: 0.1em;
+  margin-top: 8px;
 }
 
 h2 {
@@ -168,6 +174,9 @@ h2 {
   font-weight: 700;
   font-size: 30px;
   color: #1d6154;
+}
+h2 .logged-out {
+  width: 200px;
 }
 nav ul {
   display: flex;
@@ -177,6 +186,7 @@ nav ul {
 nav li {
   padding: 0 10px;
   font-size: 1.2em;
+  font-weight: 400;
 }
 
 li:hover {
@@ -185,81 +195,135 @@ li:hover {
 #introduction {
   display: flex;
   align-items: center;
+  gap: 73px;
+  margin-top: 143px;
+  margin-left: 103px;
 }
 #introduction figure {
-  flex: 1;
+  width: 474px;
+  height: 355px;
 }
 #introduction img {
-  display: block;
-  margin: auto;
-  width: 80%;
+  display: flex;
+  width: 474px;
+  height: 355px;
 }
-
 #introduction article {
-  flex: 1;
+  display: flex;
+  flex-direction: column;
+  width: 404px;
+  gap: 24px;
 }
 #introduction h2 {
-  margin-bottom: 1em;
+  margin-bottom: 0px;
 }
 
 #introduction p {
-  margin-bottom: 0.5em;
+  margin-bottom: 0px;
+  display: flex;
+}
+#portfolio {
+  display: flex;
+  flex-direction: column;
+  margin-top: 140px;
 }
 #portfolio h2 {
   text-align: center;
   margin-bottom: 1em;
+  display: flex;
+  justify-content: center;
+  padding-left: 15px;
 }
 .gallery {
-  width: 100%;
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 20px;
-  grid-row-gap: 20px;
+  width: 83.5%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 18px;
+  margin-bottom: -20px;
+  position: relative;
+  left: 103px;
+  top: -5px;
 }
-
+.gallery figure {
+  margin-bottom: 20px;
+}
+.gallery .work-item figcaption {
+  font-size: 13px;
+  margin-top: 6px;
+}
+.work-item {
+  width: 305px;
+  height: 407px;
+}
 .gallery img {
   width: 100%;
 }
 #contact {
   width: 50%;
   margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  top: 28px;
+  left: 8px;
+}
+#contact p {
+  font-size: 16px;
 }
 #contact > * {
   text-align: center;
 }
 #contact h2 {
-  margin-bottom: 20px;
+  margin-bottom: 13px;
 }
 #contact form {
   text-align: left;
-  margin-top: 30px;
+  margin-top: 15px;
   display: flex;
   flex-direction: column;
+  gap: 12px;
 }
 
-#contact input {
-  height: 50px;
+#contact #name {
+  width: 359px;
+  height: 31px;
   font-size: 1.2em;
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+#contact input[type="email"] {
+  width: 375px;
+  height: 49px;
+  border: none;
+  box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#contact #message {
+  width: 375px;
+  height: 170px;
+}
 #contact label {
-  margin: 2em 0 1em 0;
+  font-weight: 600;
+  margin-top: 25px;
+  margin-bottom: 0px;
 }
 #contact textarea {
   border: none;
   box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
-
 input[type="submit"] {
   font-family: "Syne";
   font-weight: 700;
   color: white;
   background-color: #1d6154;
   margin: 2em auto;
-  width: 180px;
+  width: 179px;
+  height: 36px;
   text-align: center;
   border-radius: 60px;
+  border: none;
+  font-size: 14px;
 }
 footer {
   width: 100vw;
@@ -267,6 +331,9 @@ footer {
   margin-right: calc(-50vw + 50%);
   padding: 0;
   background-color: #ffffff;
+  display: flex;
+  position: relative;
+  bottom: -50px;
 }
 footer nav ul {
   display: flex;
@@ -279,7 +346,10 @@ footer nav ul {
 }
 footer nav li {
   position: relative;
-  left: -100px;
+  left: 1223px;
+  top: -15px;
+  font-size: 13px;
+  font-weight: 300;
 }
 
 /**** Filter ****/
@@ -291,10 +361,16 @@ footer nav li {
   justify-content: center;
   gap: 10px;
   margin: 40px 0;
+  position: relative;
+  top: -15px;
+  left: 7px;
 }
 
-.filter-button {
-  padding: 10px 20px;
+.filter-un,
+.filter-deux,
+.filter-trois, 
+.filter-quatre {
+  padding: 5px 5px;
   border: 1px;
   border-style: solid;
   border-color: #1D6154;
@@ -305,11 +381,29 @@ footer nav li {
   outline: none;
   transition: background-color 0.3s;
   font-family: "Syne";
+  font-size: 16px;
+  font-weight: 700;
 }
 
-.filter-button:hover {
+.filter-un:hover,
+.filter-deux:hover,
+.filter-trois:hover, 
+.filter-quatre:hover {
   background-color: #1D6154;
   color : #ffffff;
+}
+
+.filter-un,
+.filter-deux {
+  width: 100px;
+}
+
+.filter-trois {
+  width: 157px;
+}
+
+.filter-quatre {
+  width: 198px;
 }
 
 /**** LOGIN PAGE ****/
@@ -326,6 +420,9 @@ footer nav li {
 
 .page {
   font-weight: 600;
+  display: flex;
+  position: relative;
+  left: -25px;
 }
 
 .title {
@@ -334,7 +431,10 @@ footer nav li {
   color: #1D6154;
   font-family: "Syne";
   font-size: 30px;
-  margin-bottom: 50px;
+  margin-bottom: 60px;
+  position: relative;
+  left: -3px;
+  top: 8px;
 }
 
 #login-form {
@@ -342,11 +442,14 @@ footer nav li {
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  position: relative;
+  left: -10px;
+  top: -15px;
 }
 
 .input-group {
   width: 359px;
-  margin-bottom: 40px;
+  margin-bottom: 33px;
 }
 
 label {
@@ -375,7 +478,9 @@ input[type="password"] {
   cursor: pointer;
   outline: none;
   font-family: "Syne";
-  margin-bottom: 20px;
+  margin-bottom: 12px;
+  position: relative;
+  left: 10px;
 }
 
 .link {
@@ -709,4 +814,60 @@ input[id="title"] {
   margin-bottom: 30px;
   position: relative;
   top: -15px;
+}
+
+.title-top {
+  display: flex;
+  position: relative;
+  left: 100px;
+}
+
+.projets {
+  display: flex;
+  position: relative;
+  left: -62px;
+}
+
+.projets-login {
+  display: flex;
+  position: relative;
+  left: -72px;
+}
+
+.contact {
+  display: flex;
+  position: relative;
+  left: -44px;
+}
+
+.contact-login {
+  display: flex;
+  position: relative;
+  left: -52px;
+}
+
+.log-in {
+  display: flex;
+  position: relative;
+  left: -16px;
+}
+
+.instagram {
+  width: 19.35px;
+  display: flex;
+  position: relative;
+  left: 17px;
+}
+
+.instagram-login {
+  width: 19.35px;
+  display: flex;
+  position: relative;
+  left: 10px;
+}
+
+.login-title {
+  display: flex;
+  position: relative;
+  left: 0px;
 }
