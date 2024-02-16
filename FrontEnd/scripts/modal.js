@@ -35,18 +35,18 @@ function fetchModalPortfolioData() {
 
 // Configuration des écouteurs d'événements
 function setupEventListeners() {
-  buttonOpenPortfolioModal.onclick = () => openModal(modalPortfolio);
-  spanClosePortfolioModal.onclick = () => closeModal(modalPortfolio);
-  spanCloseAddModal.onclick = () => closeModal(addModal);
-  btnOpenAddProjectModal.onclick = openAddProjectModal;
-  returnToFirstModalButton.onclick = returnToFirstModal;
-  addPhotoButton.onclick = () => fileInput.click();
-  window.onclick = windowOnClick;
-  fileInput.onchange = handleFileInputChange;
-  titleInput.oninput = updateButtonState;
-  categorySelect.onchange = updateButtonState;
-  addProjectForm.onsubmit = addProject;
-  logoutLink.onclick = logoutUser;
+  buttonOpenPortfolioModal.addEventListener("click", () => openModal(modalPortfolio));
+  spanClosePortfolioModal.addEventListener("click", () => closeModal(modalPortfolio));
+  spanCloseAddModal.addEventListener("click", () => closeModal(addModal));
+  btnOpenAddProjectModal.addEventListener("click", openAddProjectModal);
+  returnToFirstModalButton.addEventListener("click", returnToFirstModal);
+  addPhotoButton.addEventListener("click", () => fileInput.click());
+  window.addEventListener("click", windowOnClick);
+  fileInput.addEventListener("change", handleFileInputChange);
+  titleInput.addEventListener("input", updateButtonState);
+  categorySelect.addEventListener("change", updateButtonState);
+  addProjectForm.addEventListener("submit", addProject);
+  logoutLink.addEventListener("click", logoutUser);
 }
 
 function closeModal(modal) {
