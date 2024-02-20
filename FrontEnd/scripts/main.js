@@ -1,10 +1,3 @@
-// Fonctions nommées pour le chargement du DOM
-function onDOMContentLoaded() {
-  fetchPortfolioData();
-  getCategoriesFromWorks();
-  handleUserSession();
-}
-
 // Fetch initial des données du portfolio
 function fetchPortfolioData() {
   fetch("http://localhost:5678/api/works")
@@ -100,5 +93,7 @@ function logoutUser() {
   window.location.href = "./index.html";
 }
 
-// Initialisation
-document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+// Appel des fonctions
+fetchPortfolioData();
+getCategoriesFromWorks();
+handleUserSession();

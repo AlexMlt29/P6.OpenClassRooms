@@ -17,12 +17,6 @@ const validateButton = document.querySelector(".validation");
 const addProjectForm = document.getElementById("add-project");
 const logoutLink = document.querySelector(".logout-link");
 
-// Fonctions nommées pour le chargement du DOM
-function onDOMContentLoaded() {
-  fetchModalPortfolioData();
-  setupEventListeners();
-}
-
 // Fetch initial des données du portfolio
 function fetchModalPortfolioData() {
   fetch("http://localhost:5678/api/works")
@@ -220,5 +214,6 @@ function addProject(e) {
     });
 }
 
-// Initialisation
-document.addEventListener("DOMContentLoaded", onDOMContentLoaded);
+// Appel des fonctions
+fetchModalPortfolioData();
+setupEventListeners();
